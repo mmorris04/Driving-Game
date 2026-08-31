@@ -1,0 +1,96 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqdudv1d37qgo"]
+
+[ext_resource type="Script" uid="uid://df16xjj30pg0k" path="res://Scripts/license.gd" id="1_468u3"]
+[ext_resource type="Texture2D" uid="uid://b2l6lc7yxg4yi" path="res://icons/pfp.png" id="1_aa53a"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_468u3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -375.0
+offset_top = -250.0
+offset_right = 375.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 1
+offset_left = 22.0
+offset_top = 15.0
+offset_right = 560.0
+offset_bottom = 98.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "UK Drivers License"
+
+[node name="FirstName" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -428.0
+offset_top = 123.0
+offset_right = -28.0
+offset_bottom = 183.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "First Name"
+
+[node name="LastName" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -428.0
+offset_top = 200.0
+offset_right = -28.0
+offset_bottom = 260.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Last Name"
+
+[node name="DateOfBirth" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -428.0
+offset_top = 280.0
+offset_right = -28.0
+offset_bottom = 340.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "01.01.1969"
+
+[node name="Points" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -711.0
+offset_top = 376.0
+offset_right = -18.0
+offset_bottom = 486.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "+25 Points"
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 117.0
+offset_right = 289.0
+offset_bottom = 367.0
+texture = ExtResource("1_aa53a")
+expand_mode = 2

@@ -1,0 +1,165 @@
+[gd_scene load_steps=22 format=3 uid="uid://cc3i8r8ii5l46"]
+
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="1_2hpl7"]
+[ext_resource type="Script" uid="uid://isdedp0fqtc" path="res://Scripts/menus.gd" id="1_q3xga"]
+[ext_resource type="PackedScene" uid="uid://clc5dre31iskm" path="res://addons/godot-xr-tools/xr/start_xr.tscn" id="2_8ovod"]
+[ext_resource type="PackedScene" uid="uid://cggfntcstu0up" path="res://Scenes/main_menu.tscn" id="3_qdaxd"]
+[ext_resource type="PackedScene" uid="uid://cvpyvpyqsy0ua" path="res://Scenes/results_page.tscn" id="4_ri7g6"]
+[ext_resource type="PackedScene" uid="uid://cg6r7hvpsrdj5" path="res://Scenes/vrPlayer.tscn" id="5_0gy8l"]
+[ext_resource type="PackedScene" uid="uid://b0m7fujsprv3m" path="res://Scenes/number_pad.tscn" id="5_ewi2v"]
+[ext_resource type="PackedScene" uid="uid://dqh1wfu8mio60" path="res://Scenes/participant_number.tscn" id="5_ulqf8"]
+[ext_resource type="PackedScene" uid="uid://biss2r0ofp85x" path="res://Scenes/welcome_page.tscn" id="8_2b31k"]
+[ext_resource type="PackedScene" uid="uid://cssvtwahpi8c5" path="res://Scenes/controls_page.tscn" id="8_s2tmk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ak5mw"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0gy8l"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_h2yge"]
+sky_material = SubResource("ProceduralSkyMaterial_0gy8l")
+
+[sub_resource type="Environment" id="Environment_q3xga"]
+background_mode = 2
+sky = SubResource("Sky_h2yge")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_0gy8l"]
+offsets = PackedFloat32Array(0.2, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_q3xga"]
+noise_type = 2
+frequency = 0.03
+cellular_jitter = 3.0
+cellular_return_type = 0
+domain_warp_enabled = true
+domain_warp_type = 1
+domain_warp_amplitude = 50.0
+domain_warp_fractal_type = 2
+domain_warp_fractal_lacunarity = 1.5
+domain_warp_fractal_gain = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ri7g6"]
+noise = SubResource("FastNoiseLite_q3xga")
+color_ramp = SubResource("Gradient_0gy8l")
+seamless = true
+
+[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_ak5mw"]
+_shader_parameters = {
+&"bias_distance": 512.0,
+&"blend_sharpness": 0.5,
+&"depth_blur": 0.0,
+&"enable_macro_variation": true,
+&"enable_projection": true,
+&"flat_terrain_normals": false,
+&"macro_variation1": Color(1, 1, 1, 1),
+&"macro_variation2": Color(1, 1, 1, 1),
+&"macro_variation_slope": 0.333,
+&"mipmap_bias": 1.0,
+&"noise1_angle": 0.0,
+&"noise1_offset": Vector2(0.5, 0.5),
+&"noise1_scale": 0.04,
+&"noise2_scale": 0.076,
+&"noise_texture": SubResource("NoiseTexture2D_ri7g6"),
+&"projection_threshold": 0.8
+}
+show_checkered = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uc4vm"]
+transparency = 4
+cull_mode = 2
+vertex_color_use_as_albedo = true
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+distance_fade_mode = 1
+distance_fade_min_distance = 128.0
+distance_fade_max_distance = 96.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_36kji"]
+generated_type = 1
+height_offset = 0.5
+material_override = SubResource("StandardMaterial3D_uc4vm")
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 128.0
+
+[sub_resource type="Terrain3DAssets" id="Terrain3DAssets_fehud"]
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_36kji")])
+
+[node name="menus" type="Node3D"]
+script = ExtResource("1_q3xga")
+
+[node name="StartXR" parent="." instance=ExtResource("2_8ovod")]
+
+[node name="MainMenuViewport" parent="." instance=ExtResource("1_2hpl7")]
+transform = Transform3D(-3.843301e-10, 0, 0.01, 0, 0.011906872, 0, -0.008792448, 0, -4.3711387e-10, 0, 2, 0)
+visible = false
+screen_size = Vector2(500, 200)
+scene = ExtResource("3_qdaxd")
+viewport_size = Vector2(1000, 500)
+material = SubResource("StandardMaterial3D_ak5mw")
+transparent = 0
+
+[node name="NumberPadViewport" parent="." instance=ExtResource("1_2hpl7")]
+transform = Transform3D(-1.3232432e-10, -0.0010856469, 0.008461255, -3.0235838e-11, 0.004751233, 0.0019333792, -0.0031052497, -2.580109e-25, -3.793856e-10, 0.99353695, 1.233276, 0)
+screen_size = Vector2(500, 200)
+scene = ExtResource("5_ewi2v")
+viewport_size = Vector2(1000, 500)
+material = SubResource("StandardMaterial3D_ak5mw")
+transparent = 0
+
+[node name="ParticipantNumberViewport" parent="." instance=ExtResource("1_2hpl7")]
+transform = Transform3D(-3.843301e-10, 0, 0.01, 0, 0.011906872, 0, -0.008792448, 0, -4.3711387e-10, 0, 2, 0)
+screen_size = Vector2(500, 200)
+scene = ExtResource("5_ulqf8")
+viewport_size = Vector2(1000, 500)
+material = SubResource("StandardMaterial3D_ak5mw")
+transparent = 0
+
+[node name="WelcomePageViewport" parent="." instance=ExtResource("1_2hpl7")]
+transform = Transform3D(-3.843301e-10, 0, 0.01, 0, 0.011906872, 0, -0.008792448, 0, -4.3711387e-10, 0, 2, 0)
+visible = false
+screen_size = Vector2(500, 200)
+scene = ExtResource("8_2b31k")
+viewport_size = Vector2(1000, 500)
+material = SubResource("StandardMaterial3D_ak5mw")
+transparent = 0
+
+[node name="ControlsPageViewport" parent="." instance=ExtResource("1_2hpl7")]
+transform = Transform3D(-3.843301e-10, 0, 0.01, 0, 0.011906872, 0, -0.008792448, 0, -4.3711387e-10, 0, 2, 0)
+visible = false
+screen_size = Vector2(500, 200)
+scene = ExtResource("8_s2tmk")
+viewport_size = Vector2(1000, 500)
+material = SubResource("StandardMaterial3D_ak5mw")
+transparent = 0
+
+[node name="ResultsPageViewport" parent="." instance=ExtResource("1_2hpl7")]
+transform = Transform3D(-3.843301e-10, 0, 0.01, 0, 0.011906872, 0, -0.008792448, 0, -4.3711387e-10, 0, 2, 0)
+visible = false
+screen_size = Vector2(500, 200)
+scene = ExtResource("4_ri7g6")
+viewport_size = Vector2(1000, 500)
+material = SubResource("StandardMaterial3D_ak5mw")
+transparent = 0
+
+[node name="XROrigin3D" parent="." instance=ExtResource("5_0gy8l")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.913, 2, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_q3xga")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.780925, -0.17431743, 0.599808, 0.37437442, 0.6380544, 0.67285246, -0.49999997, 0.75, -0.43301252, 4.4186506, 4.2739367, -0.89585245)
+shadow_enabled = true
+
+[node name="Terrain3D" type="Terrain3D" parent="."]
+data_directory = "res://terrain data"
+material = SubResource("Terrain3DMaterial_ak5mw")
+assets = SubResource("Terrain3DAssets_fehud")
+show_checkered = true
+top_level = true
+metadata/_edit_lock_ = true

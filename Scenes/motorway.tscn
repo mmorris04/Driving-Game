@@ -1,0 +1,216 @@
+[gd_scene load_steps=11 format=3 uid="uid://bsj7rxxktj74u"]
+
+[ext_resource type="Script" uid="uid://c72kygjug5mo0" path="res://addons/road-generator/nodes/road_manager.gd" id="1_57b8e"]
+[ext_resource type="Script" uid="uid://b2pa6tnjp3agm" path="res://addons/road-generator/nodes/road_container.gd" id="2_jkkgh"]
+[ext_resource type="Material" uid="uid://dpashsuk5lr4x" path="res://addons/road-generator/resources/road_texture.material" id="3_jkkgh"]
+[ext_resource type="Script" uid="uid://3ke2ohls18t7" path="res://addons/road-generator/nodes/road_point.gd" id="4_o6sao"]
+[ext_resource type="Texture2D" uid="uid://b3mtrdngugeeu" path="res://image/road_colour.png" id="5_jkkgh"]
+[ext_resource type="Texture2D" uid="uid://dagrb54ogjr8u" path="res://image/dashed_road.png" id="5_vj035"]
+[ext_resource type="Script" uid="uid://0errd5phkogl" path="res://Scripts/reset_to_menu.gd" id="7_o6sao"]
+
+[sub_resource type="Curve3D" id="Curve3D_o6sao"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -3.4332275e-05, 0, 412.84558),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0c3ty"]
+size = Vector3(15.067207, 8.302292, 0.05773899)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o6sao"]
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.687984, 0, -122.1431)
+
+[node name="RoadManager" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 30, 0.1, -61)
+script = ExtResource("1_57b8e")
+metadata/_custom_type_script = "uid://c72kygjug5mo0"
+
+[node name="Slip Road" type="Node3D" parent="RoadManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2187767, 0, 0.7154999)
+script = ExtResource("2_jkkgh")
+material_resource = ExtResource("3_jkkgh")
+use_lowpoly_preview = true
+edge_containers = Array[NodePath]([NodePath(""), NodePath("")])
+edge_rp_targets = Array[NodePath]([NodePath("RAMP_02"), NodePath("")])
+edge_rp_target_dirs = Array[int]([1, -1])
+edge_rp_locals = Array[NodePath]([NodePath("Node3D"), NodePath("Node3D002")])
+edge_rp_local_dirs = Array[int]([0, 1])
+
+[node name="Node3D" type="Node3D" parent="RoadManager/Slip Road"]
+transform = Transform3D(0.848769, 0, -0.528764, 0, 1, 0, 0.528764, 0, 0.848769, 5.070306, 0, 10.479416)
+script = ExtResource("4_o6sao")
+traffic_dir = Array[int]([1])
+lanes = Array[int]([0])
+prior_mag = 12.9596
+next_mag = 14.054783
+prior_pt_init = NodePath("../Node3D001")
+
+[node name="Node3D001" type="Node3D" parent="RoadManager/Slip Road"]
+transform = Transform3D(0.9763325, 0.003475413, -0.21624774, 0, 0.9998709, 0.016069371, 0.21627566, -0.015689045, 0.9762064, 10.479149, 0, -110.950836)
+script = ExtResource("4_o6sao")
+traffic_dir = Array[int]([1])
+lanes = Array[int]([0])
+prior_mag = 12.750539
+next_mag = 14.054783
+prior_pt_init = NodePath("../Node3D002")
+next_pt_init = NodePath("../Node3D")
+
+[node name="Node3D002" type="Node3D" parent="RoadManager/Slip Road"]
+transform = Transform3D(0.9795457, 0.007418574, -0.20108539, -0.00024737656, 0.9993638, 0.035664152, 0.20122202, -0.034884915, 0.9789244, 16.908411, 0, -199.78583)
+script = ExtResource("4_o6sao")
+traffic_dir = Array[int]([1])
+lanes = Array[int]([0])
+prior_mag = 12.750539
+next_mag = 12.750539
+next_pt_init = NodePath("../Node3D001")
+
+[node name="Forward Road" type="Node3D" parent="RoadManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, -0.079)
+script = ExtResource("2_jkkgh")
+material_resource = ExtResource("3_jkkgh")
+use_lowpoly_preview = true
+ai_lane_group = "1"
+auto_free_vehicles = false
+edge_containers = Array[NodePath]([NodePath(""), NodePath("")])
+edge_rp_targets = Array[NodePath]([NodePath("HW_02"), NodePath("Node3D")])
+edge_rp_target_dirs = Array[int]([0, 1])
+edge_rp_locals = Array[NodePath]([NodePath("Node3D"), NodePath("Node3D001")])
+edge_rp_local_dirs = Array[int]([1, 0])
+
+[node name="Node3D" type="Node3D" parent="RoadManager/Forward Road"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7166138e-05, 0.10000001, -200.72823)
+script = ExtResource("4_o6sao")
+traffic_dir = Array[int]([1, 1, 1])
+lanes = Array[int]([0, 3, 2])
+next_mag = 18.946468
+next_pt_init = NodePath("../Node3D001")
+
+[node name="MidLane" type="Path3D" parent="RoadManager/Forward Road/Node3D"]
+curve = SubResource("Curve3D_o6sao")
+
+[node name="Node3D001" type="Node3D" parent="RoadManager/Forward Road"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1498413e-05, 0.10000001, 965.6271)
+script = ExtResource("4_o6sao")
+traffic_dir = Array[int]([1, 1, 1])
+lanes = Array[int]([0, 3, 2])
+prior_mag = 777.6211
+next_mag = 777.6211
+prior_pt_init = NodePath("../Node3D")
+
+[node name="DashedRoadLines" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06662941, 0)
+
+[node name="Decal" type="Decal" parent="DashedRoadLines"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.386, 0.1, -17.367)
+size = Vector3(4.434, 0.1, 19.315)
+texture_albedo = ExtResource("5_vj035")
+modulate = Color(0.72976184, 0.72976184, 0.72976184, 1)
+upper_fade = 0.0013461328
+lower_fade = 0.0023437445
+
+[node name="Gap" type="Decal" parent="DashedRoadLines"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.713348, 0.1051867, -27.553253)
+size = Vector3(3.777, 0.1, 1.147)
+texture_albedo = ExtResource("5_jkkgh")
+modulate = Color(0.7349789, 0.7349789, 0.7349789, 1)
+upper_fade = 0.0013461328
+lower_fade = 0.0023437445
+
+[node name="Gap2" type="Decal" parent="DashedRoadLines"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.713348, 0.1051867, -7.1562195)
+size = Vector3(3.777, 0.1, 1.147)
+texture_albedo = ExtResource("5_jkkgh")
+modulate = Color(0.7349789, 0.7349789, 0.7349789, 1)
+upper_fade = 0.0013461328
+lower_fade = 0.0023437445
+
+[node name="Decal2" type="Decal" parent="DashedRoadLines"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.386019, 0.1051867, 2.832573)
+size = Vector3(4.434, 0.1, 19.315)
+texture_albedo = ExtResource("5_vj035")
+modulate = Color(0.72976184, 0.72976184, 0.72976184, 1)
+upper_fade = 0.0013461328
+lower_fade = 0.0023437445
+
+[node name="Gap3" type="Decal" parent="DashedRoadLines"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.713348, 0.1051867, 12.995056)
+size = Vector3(3.777, 0.1, 1.147)
+texture_albedo = ExtResource("5_jkkgh")
+modulate = Color(0.7349789, 0.7349789, 0.7349789, 1)
+upper_fade = 0.0013461328
+lower_fade = 0.0023437445
+
+[node name="Decal6" type="Decal" parent="DashedRoadLines"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.386019, 0.1051867, 23.242233)
+size = Vector3(4.434, 0.1, 19.315)
+texture_albedo = ExtResource("5_vj035")
+modulate = Color(0.72976184, 0.72976184, 0.72976184, 1)
+upper_fade = 0.0013461328
+lower_fade = 0.0023437445
+
+[node name="Gap4" type="Decal" parent="DashedRoadLines"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.713348, 0.1051867, 33.543022)
+size = Vector3(3.777, 0.1, 1.147)
+texture_albedo = ExtResource("5_jkkgh")
+modulate = Color(0.7349789, 0.7349789, 0.7349789, 1)
+upper_fade = 0.0013461328
+lower_fade = 0.0023437445
+
+[node name="Decal7" type="Decal" parent="DashedRoadLines"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.386, 0.105, 43.982)
+size = Vector3(4.434, 0.1, 19.315)
+texture_albedo = ExtResource("5_vj035")
+modulate = Color(0.72976184, 0.72976184, 0.72976184, 1)
+upper_fade = 0.0013461328
+lower_fade = 0.0023437445
+
+[node name="Decal3" type="Decal" parent="DashedRoadLines"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.386, 0.099999994, -35.16295)
+size = Vector3(4.434, 0.1, 19.315)
+texture_albedo = ExtResource("5_vj035")
+modulate = Color(0.72976184, 0.72976184, 0.72976184, 1)
+upper_fade = 0.0013461328
+lower_fade = 0.0023437445
+
+[node name="Gap5" type="Decal" parent="DashedRoadLines"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.713348, 0.1051867, -45.29216)
+size = Vector3(3.777, 0.1, 1.147)
+texture_albedo = ExtResource("5_jkkgh")
+modulate = Color(0.7349789, 0.7349789, 0.7349789, 1)
+upper_fade = 0.0013461328
+lower_fade = 0.0023437445
+
+[node name="Decal4" type="Decal" parent="DashedRoadLines"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.386, 0.099999994, -57.99298)
+size = Vector3(4.434, 0.1, 24.099136)
+texture_albedo = ExtResource("5_vj035")
+modulate = Color(0.72976184, 0.72976184, 0.72976184, 1)
+upper_fade = 0.0013461328
+lower_fade = 0.0023437445
+
+[node name="ResetToMenu" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.403805, 0, -272.34494)
+script = ExtResource("7_o6sao")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="ResetToMenu"]
+transform = Transform3D(20.941502, 0, 2.1316282e-14, 0, 2.6980388, 0, -4.4639496e-13, 0, 1, 1.3650398, 4.21714, -0.11395264)
+shape = SubResource("BoxShape3D_0c3ty")
+
+[node name="Decal" type="Decal" parent="ResetToMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2029419, 4.1890564, 0)
+size = Vector3(15.565063, 8.295959, 2)
+texture_albedo = ExtResource("5_vj035")
+upper_fade = 0.047796004
+lower_fade = 0.038822386
+
+[node name="MirrorCheck" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.749483, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MirrorCheck"]
+transform = Transform3D(33.58159, 0, 0, 0, 17.437496, 0, 0, 0, 153.71164, 10.033131, 0, 0)
+shape = SubResource("BoxShape3D_o6sao")
+
+[connection signal="body_entered" from="ResetToMenu" to="ResetToMenu" method="_on_body_entered"]

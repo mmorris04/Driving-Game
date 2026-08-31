@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://j4khjslh68nd"
+path="res://.godot/imported/Car Indicator Interior Sound Effect.mp3-542461ce434a300551f8206ea27ebb83.mp3str"
+
+[deps]
+
+source_file="res://addons/audio/Car Indicator Interior Sound Effect.mp3"
+dest_files=["res://.godot/imported/Car Indicator Interior Sound Effect.mp3-542461ce434a300551f8206ea27ebb83.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

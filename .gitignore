@@ -1,0 +1,27 @@
+# Godot-specific ignores
+.import/
+
+
+# Imported translations (automatically generated from CSV files)
+*.translation
+
+# Mono-specific ignores
+.mono/
+data_*/
+
+# Godot 4+ specific ignores
+.godot/
+/android/
+*.apk
+
+# Ignore most files from godotopenxrvendors folderr
+addons/godotopenxrvendors/.bin/macos/*
+addons/godotopenxrvendors/.bin/windows/*
+addons/godotopenxrvendors/.bin/linux/*
+addons/godotopenxrvendors/.bin/android/template_*
+addons/godotopenxrvendors/.bin/android/*/godotopenxr*.aar
+
+# Keep meta related template files
+!addons/godotopenxrvendors/.bin/android/*/godotopenxr*meta*.aar
+
+

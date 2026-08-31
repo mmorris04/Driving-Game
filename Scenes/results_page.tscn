@@ -1,0 +1,267 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvpyvpyqsy0ua"]
+
+[ext_resource type="Texture2D" uid="uid://ca5gcvy36sad5" path="res://icons/mirrorIcon.png" id="1_1xvs7"]
+[ext_resource type="Texture2D" uid="uid://4pq4t73jhvkm" path="res://icons/passIcon.png" id="2_3xapc"]
+[ext_resource type="Texture2D" uid="uid://ts3jc8le8648" path="res://icons/continuebutton.png" id="3_vxmt0"]
+[ext_resource type="Texture2D" uid="uid://cieipi1l3e84u" path="res://icons/signalIcon.png" id="3_xbvum"]
+[ext_resource type="Texture2D" uid="uid://dlaivrrwtelvv" path="res://icons/collisionIcon.png" id="4_fntet"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(1000, 500)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_right = 1000.0
+offset_bottom = 500.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -375.0
+offset_top = -150.0
+offset_right = 375.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ColorRect/MarginContainer"]
+layout_mode = 2
+
+[node name="Collisions" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 94)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0.72248924, 0.61003596, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.72248924, 0.61003596, 1)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+
+[node name="Title" type="Label" parent="Control/ColorRect/MarginContainer/VBoxContainer/Collisions"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 7.0
+offset_right = 350.0
+offset_bottom = 37.0
+theme_override_font_sizes/font_size = 23
+text = "Collisions"
+
+[node name="Description" type="Label" parent="Control/ColorRect/MarginContainer/VBoxContainer/Collisions"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 39.0
+offset_right = 650.0
+offset_bottom = 89.0
+theme_override_font_sizes/font_size = 16
+text = "Lorem ipsum dolor sit amet."
+autowrap_mode = 1
+autowrap_trim_flags = 0
+clip_text = true
+text_overrun_behavior = 6
+
+[node name="Icon" type="TextureRect" parent="Control/ColorRect/MarginContainer/VBoxContainer/Collisions"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 15.0
+offset_top = -29.0
+offset_right = 75.0
+offset_bottom = 31.0
+grow_vertical = 2
+texture = ExtResource("4_fntet")
+expand_mode = 1
+
+[node name="Result" type="TextureRect" parent="Control/ColorRect/MarginContainer/VBoxContainer/Collisions"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -25.0
+offset_right = -25.0
+offset_bottom = 25.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("2_3xapc")
+expand_mode = 1
+
+[node name="Mirrors" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 94)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0.72248924, 0.61003596, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.72248924, 0.61003596, 1)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+
+[node name="Title" type="Label" parent="Control/ColorRect/MarginContainer/VBoxContainer/Mirrors"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 7.0
+offset_right = 350.0
+offset_bottom = 37.0
+theme_override_font_sizes/font_size = 23
+text = "Mirror Checks"
+
+[node name="Description" type="Label" parent="Control/ColorRect/MarginContainer/VBoxContainer/Mirrors"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 39.0
+offset_right = 650.0
+offset_bottom = 89.0
+theme_override_font_sizes/font_size = 16
+text = "Lorem ipsum dolor sit amet."
+autowrap_mode = 1
+autowrap_trim_flags = 0
+clip_text = true
+text_overrun_behavior = 6
+
+[node name="Icon" type="TextureRect" parent="Control/ColorRect/MarginContainer/VBoxContainer/Mirrors"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 15.0
+offset_top = -29.0
+offset_right = 75.0
+offset_bottom = 31.0
+grow_vertical = 2
+texture = ExtResource("1_1xvs7")
+expand_mode = 1
+
+[node name="Result" type="TextureRect" parent="Control/ColorRect/MarginContainer/VBoxContainer/Mirrors"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -25.0
+offset_right = -25.0
+offset_bottom = 25.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("2_3xapc")
+expand_mode = 1
+
+[node name="Signalling" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 94)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0.72248924, 0.61003596, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.72248924, 0.61003596, 1)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+
+[node name="Title" type="Label" parent="Control/ColorRect/MarginContainer/VBoxContainer/Signalling"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 7.0
+offset_right = 350.0
+offset_bottom = 37.0
+theme_override_font_sizes/font_size = 23
+text = "Signalling"
+
+[node name="Description" type="Label" parent="Control/ColorRect/MarginContainer/VBoxContainer/Signalling"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 39.0
+offset_right = 650.0
+offset_bottom = 89.0
+theme_override_font_sizes/font_size = 16
+text = "Lorem ipsum dolor sit amet."
+autowrap_mode = 1
+autowrap_trim_flags = 0
+clip_text = true
+text_overrun_behavior = 6
+
+[node name="Icon" type="TextureRect" parent="Control/ColorRect/MarginContainer/VBoxContainer/Signalling"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 15.0
+offset_top = -29.0
+offset_right = 75.0
+offset_bottom = 31.0
+grow_vertical = 2
+texture = ExtResource("3_xbvum")
+expand_mode = 1
+
+[node name="Result" type="TextureRect" parent="Control/ColorRect/MarginContainer/VBoxContainer/Signalling"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -25.0
+offset_right = -25.0
+offset_bottom = 25.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("2_3xapc")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Control/ColorRect"]
+clip_contents = true
+layout_mode = 1
+offset_left = 125.0
+offset_top = 12.0
+offset_right = 875.0
+offset_bottom = 76.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_font_sizes/font_size = 32
+text = "Scenario Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Continue" type="TextureButton" parent="Control/ColorRect"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -100.0
+offset_top = 30.0
+offset_right = -30.0
+offset_bottom = 100.0
+grow_horizontal = 0
+texture_normal = ExtResource("3_vxmt0")
+texture_pressed = ExtResource("3_vxmt0")
+texture_hover = ExtResource("3_vxmt0")
+texture_disabled = ExtResource("3_vxmt0")
+texture_focused = ExtResource("3_vxmt0")
+ignore_texture_size = true
+stretch_mode = 0

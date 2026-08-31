@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://c86wom7p08ggj"]
+
+[ext_resource type="ArrayMesh" uid="uid://dibuy4wcpd5cr" path="res://steering wheel/wheelfixed.obj" id="1_y0svy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gh6qo"]
+albedo_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_thcgq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y0svy"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_y0svy"]
+material = SubResource("StandardMaterial3D_y0svy")
+outer_radius = 0.745
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1iyt7"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_1iyt7"]
+material = SubResource("StandardMaterial3D_1iyt7")
+outer_radius = 0.745
+
+[node name="Steer" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.9521614, 0.3055956, 0, -0.3055956, 0.9521614, 0, 0, 0)
+
+[node name="Stear" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, -0.228, 0)
+mesh = ExtResource("1_y0svy")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_gh6qo")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.2, 0, 0, 0)
+shape = SubResource("SphereShape3D_thcgq")
+
+[node name="Highlighter_left" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.01, 0, 0, 0, 1.1641532e-09, -0.010000007, 0, 0.010000007, 1.1641532e-09, -0.10959724, 0.09700001, 0.015)
+mesh = SubResource("TorusMesh_y0svy")
+
+[node name="Highlighter_right" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.01, 0, 0, 0, -4.656613e-10, -0.01, 0, 0.01, -4.656613e-10, 0.11, 0.097, 0.015)
+mesh = SubResource("TorusMesh_1iyt7")

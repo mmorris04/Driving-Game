@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b05175xlm3op7"]
+
+[ext_resource type="Script" uid="uid://sfwrwub8n7bo" path="res://Scripts/traffic_controller.gd" id="1_myew8"]
+
+[node name="TrafficController" type="Node3D"]
+script = ExtResource("1_myew8")

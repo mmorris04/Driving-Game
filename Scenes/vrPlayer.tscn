@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://cg6r7hvpsrdj5"]
+
+[ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="1_1myqi"]
+[ext_resource type="Script" uid="uid://cecuohopnmter" path="res://Scripts/xr_camera_3d.gd" id="1_x8712"]
+[ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="2_x8712"]
+[ext_resource type="Material" uid="uid://p0q2df2dmy62" path="res://addons/godot-xr-tools/hands/materials/ghost_hand.tres" id="3_7f6gl"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="3_28dvr"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7f6gl"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_aiifg"]
+
+[node name="XROrigin3D" type="XROrigin3D"]
+process_mode = 3
+
+[node name="XRCamera3D" type="XRCamera3D" parent="."]
+current = true
+script = ExtResource("1_x8712")
+
+[node name="leftHand" type="XRController3D" parent="."]
+tracker = &"left_hand"
+
+[node name="LeftHand" parent="leftHand" instance=ExtResource("1_1myqi")]
+hand_blend_tree = null
+hand_material_override = ExtResource("3_7f6gl")
+default_pose = null
+
+[node name="Area3D" type="Area3D" parent="leftHand/LeftHand"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="leftHand/LeftHand/Area3D"]
+shape = SubResource("SphereShape3D_7f6gl")
+
+[node name="FunctionPointer" parent="leftHand" instance=ExtResource("3_28dvr")]
+process_mode = 3
+distance = 25.0
+show_laser = 2
+laser_length = 1
+show_target = true
+target_radius = 0.025
+
+[node name="rightHand" type="XRController3D" parent="."]
+tracker = &"right_hand"
+
+[node name="RightHand" parent="rightHand" instance=ExtResource("2_x8712")]
+hand_material_override = ExtResource("3_7f6gl")
+
+[node name="Area3D" type="Area3D" parent="rightHand/RightHand"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0.1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rightHand/RightHand/Area3D"]
+shape = SubResource("SphereShape3D_aiifg")
+
+[node name="FunctionPointer" parent="rightHand" instance=ExtResource("3_28dvr")]
+process_mode = 3
+distance = 25.0
+show_laser = 2
+laser_length = 1
+show_target = true
+target_radius = 0.025
+
+[connection signal="button_pressed" from="leftHand" to="XRCamera3D" method="_on_left_hand_button_pressed"]
+[connection signal="input_float_changed" from="leftHand" to="XRCamera3D" method="_on_left_hand_input_float_changed"]
+[connection signal="button_pressed" from="rightHand" to="XRCamera3D" method="_on_right_hand_button_pressed"]
+[connection signal="input_float_changed" from="rightHand" to="XRCamera3D" method="_on_right_hand_input_float_changed"]

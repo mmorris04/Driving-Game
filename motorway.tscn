@@ -1,0 +1,174 @@
+[gd_scene load_steps=7 format=3 uid="uid://cte67idlqf7wa"]
+
+[ext_resource type="Script" uid="uid://bl34qo2mwru8w" path="res://addons/road-generator/nodes/road_lane.gd" id="1_kv6jv"]
+[ext_resource type="Script" uid="uid://c72kygjug5mo0" path="res://addons/road-generator/nodes/road_manager.gd" id="2_0qr64"]
+[ext_resource type="PackedScene" uid="uid://cbw5410mk0wgq" path="res://addons/road-generator/custom_containers/highway_offramp.tscn" id="3_5lwuu"]
+[ext_resource type="Script" uid="uid://3ke2ohls18t7" path="res://addons/road-generator/nodes/road_point.gd" id="4_7ydro"]
+[ext_resource type="Script" uid="uid://b2pa6tnjp3agm" path="res://addons/road-generator/nodes/road_container.gd" id="5_qmifl"]
+
+[sub_resource type="Curve3D" id="Curve3D_txgn7"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="RoadLane" type="Path3D" parent="."]
+curve = SubResource("Curve3D_txgn7")
+script = ExtResource("1_kv6jv")
+metadata/_custom_type_script = "uid://bl34qo2mwru8w"
+
+[node name="RoadManager" type="Node3D" parent="."]
+script = ExtResource("2_0qr64")
+metadata/_custom_type_script = "uid://c72kygjug5mo0"
+
+[node name="highway_offramp" parent="RoadManager" instance=ExtResource("3_5lwuu")]
+edge_containers = Array[NodePath]([NodePath("../Road_002"), NodePath("../Road_001"), NodePath("")])
+edge_rp_targets = Array[NodePath]([NodePath("RP_002"), NodePath("Node3D"), NodePath("")])
+edge_rp_target_dirs = Array[int]([0, 0, -1])
+edge_rp_locals = Array[NodePath]([NodePath("HW_01"), NodePath("RAMP_02"), NodePath("HW_03")])
+edge_rp_local_dirs = Array[int]([1, 1, 0])
+
+[node name="HW_01" parent="RoadManager/highway_offramp" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="HW_02" parent="RoadManager/highway_offramp" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+next_mag = 24.93633
+next_pt_init = NodePath("../HW_03")
+
+[node name="RAMP_01" parent="RoadManager/highway_offramp" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8649073, 0.52334595, 16.299522)
+
+[node name="RAMP_02" parent="RoadManager/highway_offramp" index="3"]
+transform = Transform3D(0.848769, 0, -0.528764, 0, 1, 0, 0.528764, 0, 0.848769, 17.609556, 0.52334595, -23.700478)
+
+[node name="highway_offramp_exp" parent="RoadManager/highway_offramp/highway_offramp" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.609556, 0.52334595, -23.700478)
+
+[node name="HW_03" type="Node3D" parent="RoadManager/highway_offramp"]
+transform = Transform3D(0.9958167, -0.0009141079, 0.09136899, 0, 0.99994993, 0.010004074, -0.09137356, -0.009962224, 0.9957669, 2.9918518, 0.77334595, 65.820366)
+script = ExtResource("4_7ydro")
+traffic_dir = Array[int]([1, 1, 1])
+lanes = Array[int]([0, 3, 2])
+prior_mag = 24.93633
+next_mag = 24.93633
+prior_pt_init = NodePath("../HW_02")
+
+[node name="Road_001" type="Node3D" parent="RoadManager"]
+script = ExtResource("5_qmifl")
+use_lowpoly_preview = true
+edge_containers = Array[NodePath]([NodePath("../highway_offramp"), NodePath("")])
+edge_rp_targets = Array[NodePath]([NodePath("RAMP_02"), NodePath("")])
+edge_rp_target_dirs = Array[int]([1, -1])
+edge_rp_locals = Array[NodePath]([NodePath("Node3D"), NodePath("Node3D003")])
+edge_rp_local_dirs = Array[int]([0, 1])
+
+[node name="Node3D" type="Node3D" parent="RoadManager/Road_001"]
+transform = Transform3D(0.848769, 0, -0.528764, 0, 1, 0, 0.528764, 0, 0.848769, 17.609556, 0.52334595, -23.700478)
+script = ExtResource("4_7ydro")
+traffic_dir = Array[int]([1])
+lanes = Array[int]([0])
+prior_mag = 12.9596
+next_mag = 16.004656
+prior_pt_init = NodePath("../Node3D001")
+
+[node name="Node3D001" type="Node3D" parent="RoadManager/Road_001"]
+transform = Transform3D(0.9998991, -0.00017474935, 0.014211439, 0, 0.9999244, 0.012295461, -0.014212512, -0.012294217, 0.9998235, 24.173164, 0.77334213, -55.029617)
+script = ExtResource("4_7ydro")
+traffic_dir = Array[int]([1])
+lanes = Array[int]([0])
+prior_mag = 25.939568
+next_mag = 16.004656
+prior_pt_init = NodePath("../Node3D002")
+next_pt_init = NodePath("../Node3D")
+
+[node name="Node3D002" type="Node3D" parent="RoadManager/Road_001"]
+transform = Transform3D(0.993251, 0.000938301, -0.115980774, 0.0015994946, 0.9997614, 0.021786174, 0.11597353, -0.021824649, 0.9930126, 26.825891, 0.38680667, -106.84005)
+script = ExtResource("4_7ydro")
+traffic_dir = Array[int]([1])
+lanes = Array[int]([0])
+prior_mag = 14.400846
+next_mag = 25.939568
+prior_pt_init = NodePath("../Node3D003")
+next_pt_init = NodePath("../Node3D001")
+
+[node name="Node3D003" type="Node3D" parent="RoadManager/Road_001"]
+transform = Transform3D(0.9801043, -0.002422182, 0.19846848, -0.0052511957, 0.99925905, 0.038127508, -0.19841376, -0.038411126, 0.9793655, 25.565939, 0.009946302, -135.6128)
+script = ExtResource("4_7ydro")
+traffic_dir = Array[int]([1])
+lanes = Array[int]([0])
+prior_mag = 14.400846
+next_mag = 14.400846
+next_pt_init = NodePath("../Node3D002")
+
+[node name="Road_002" type="Node3D" parent="RoadManager"]
+script = ExtResource("5_qmifl")
+use_lowpoly_preview = true
+edge_containers = Array[NodePath]([NodePath("../highway_offramp"), NodePath("")])
+edge_rp_targets = Array[NodePath]([NodePath("HW_01"), NodePath("")])
+edge_rp_target_dirs = Array[int]([1, -1])
+edge_rp_locals = Array[NodePath]([NodePath("RP_002"), NodePath("RP_006")])
+edge_rp_local_dirs = Array[int]([0, 1])
+
+[node name="RP_002" type="Node3D" parent="RoadManager/Road_002"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7085571, 0.52334595, -25.700478)
+script = ExtResource("4_7ydro")
+traffic_dir = Array[int]([1, 1, 1])
+lanes = Array[int]([0, 3, 2])
+next_mag = 18.242163
+prior_pt_init = NodePath("../RP_003")
+
+[node name="RP_003" type="Node3D" parent="RoadManager/Road_002"]
+transform = Transform3D(0.9965005, -0.0006633799, 0.08358435, 0, 0.9999685, 0.007936402, -0.08358698, -0.007908628, 0.99646914, -1.9243851, 0.77334595, -62.089676)
+script = ExtResource("4_7ydro")
+traffic_dir = Array[int]([1, 1, 1])
+lanes = Array[int]([0, 3, 2])
+prior_mag = 27.366886
+next_mag = 18.242163
+prior_pt_init = NodePath("../RP_004")
+next_pt_init = NodePath("../RP_002")
+
+[node name="RP_004" type="Node3D" parent="RoadManager/Road_002"]
+transform = Transform3D(0.9853535, 0.00086926436, -0.17052132, 0.0020022413, 0.9998591, 0.016666876, 0.17051177, -0.01676419, 0.98521304, 0.5310689, 0.59252906, -116.768616)
+script = ExtResource("4_7ydro")
+traffic_dir = Array[int]([1, 1, 1])
+lanes = Array[int]([0, 3, 2])
+prior_mag = 12.0
+next_mag = 27.366886
+prior_pt_init = NodePath("../RP_005")
+next_pt_init = NodePath("../RP_003")
+
+[node name="RP_005" type="Node3D" parent="RoadManager/Road_002"]
+transform = Transform3D(0.899888, -0.010364432, 0.43599766, -0.008093335, 0.99914855, 0.04045596, -0.4360457, -0.039934512, 0.899038, -1.6539652, 0.49979693, -137.3255)
+script = ExtResource("4_7ydro")
+traffic_dir = Array[int]([1, 1, 1])
+lanes = Array[int]([0, 3, 2])
+prior_mag = 12.0
+next_mag = 12.0
+prior_pt_init = NodePath("../RP_006")
+next_pt_init = NodePath("../RP_004")
+
+[node name="RP_006" type="Node3D" parent="RoadManager/Road_002"]
+transform = Transform3D(0.9150038, -0.0029537063, -0.40343398, 0.02558422, 0.9983853, 0.050716426, 0.40263274, -0.05672728, 0.9136021, -1.4009142, -0.17628402, -160.56683)
+script = ExtResource("4_7ydro")
+traffic_dir = Array[int]([1, 1, 1])
+lanes = Array[int]([0, 3, 2])
+prior_mag = 12.0
+next_mag = 12.0
+next_pt_init = NodePath("../RP_005")
+
+[node name="Road_003" type="Node3D" parent="RoadManager"]
+script = ExtResource("5_qmifl")
+use_lowpoly_preview = true
+edge_containers = Array[NodePath]([NodePath(""), NodePath("")])
+edge_rp_targets = Array[NodePath]([NodePath(""), NodePath("")])
+edge_rp_target_dirs = Array[int]([-1, -1])
+edge_rp_locals = Array[NodePath]([NodePath("RP_001"), NodePath("RP_001")])
+edge_rp_local_dirs = Array[int]([0, 1])
+
+[node name="RP_001" type="Node3D" parent="RoadManager/Road_003"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5630875, 2.8272324, 36.46338)
+script = ExtResource("4_7ydro")
+traffic_dir = Array[int]([2, 2, 1, 1])
+lanes = Array[int]([2, 4, 4, 2])
+
+[editable path="RoadManager/highway_offramp"]
+[editable path="RoadManager/highway_offramp/highway_offramp"]

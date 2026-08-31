@@ -1,0 +1,118 @@
+[gd_scene load_steps=3 format=3 uid="uid://biss2r0ofp85x"]
+
+[ext_resource type="Texture2D" uid="uid://s4058h0fha6l" path="res://icon.svg" id="1_yn6bp"]
+[ext_resource type="Texture2D" uid="uid://co44ps4i00tn4" path="res://icons/backbutton.png" id="2_jnbbu"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(1000, 500)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_right = 1000.0
+offset_bottom = 500.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -375.0
+offset_top = -150.0
+offset_right = 375.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ColorRect/MarginContainer"]
+layout_mode = 2
+
+[node name="Scenario1" type="Button" parent="Control/ColorRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 94)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0.72248924, 0.61003596, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.72248924, 0.61003596, 1)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+
+[node name="ScenarioName" type="Label" parent="Control/ColorRect/MarginContainer/VBoxContainer/Scenario1"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 7.0
+offset_right = 350.0
+offset_bottom = 37.0
+theme_override_font_sizes/font_size = 23
+text = "Scenario 1"
+
+[node name="ScenarioDescription" type="Label" parent="Control/ColorRect/MarginContainer/VBoxContainer/Scenario1"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 39.0
+offset_right = 730.0
+offset_bottom = 89.0
+theme_override_font_sizes/font_size = 16
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+autowrap_mode = 1
+autowrap_trim_flags = 0
+clip_text = true
+text_overrun_behavior = 6
+
+[node name="TextureRect" type="TextureRect" parent="Control/ColorRect/MarginContainer/VBoxContainer/Scenario1"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 10.0
+offset_top = -40.0
+offset_right = 90.0
+offset_bottom = 40.0
+grow_vertical = 2
+texture = ExtResource("1_yn6bp")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Control/ColorRect"]
+clip_contents = true
+layout_mode = 1
+offset_left = 125.0
+offset_top = 12.0
+offset_right = 875.0
+offset_bottom = 76.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_font_sizes/font_size = 32
+text = "Choose a scenario"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" type="TextureButton" parent="Control/ColorRect"]
+layout_mode = 1
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 100.0
+offset_bottom = 100.0
+texture_normal = ExtResource("2_jnbbu")
+texture_pressed = ExtResource("2_jnbbu")
+texture_hover = ExtResource("2_jnbbu")
+texture_disabled = ExtResource("2_jnbbu")
+texture_focused = ExtResource("2_jnbbu")
+ignore_texture_size = true
+stretch_mode = 0
